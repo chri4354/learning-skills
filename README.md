@@ -41,19 +41,26 @@ design decision to its source.
 
 ## Install
 
+Clone it **somewhere other than your coursework folder** — it's a tool, not part
+of your work:
+
 ```bash
-git clone https://github.com/chri4354/learning-skills.git
-cd learning-skills
+git clone https://github.com/chri4354/learning-skills.git ~/tools/learning-skills
 ```
 
 Then, from inside the project you're studying in:
 
 ```bash
-/path/to/learning-skills/install.sh claude
+~/tools/learning-skills/install.sh claude
 ```
 
 Replace `claude` with `cursor`, `codex`, or `all`. Add `--global` to install it for
 every project instead of just this one (Claude Code and Codex; Cursor is per-project).
+
+It works the same whether your coursework folder is a git repo or just a folder —
+the installer only copies files, it never runs git. If the folder *is* a git repo,
+it adds `.learning/` to your `.gitignore`, so the record of what you found hard
+never gets committed or pushed anywhere.
 
 To remove it: delete the files it wrote, or the block marked
 `<!-- study-companion:start -->`.

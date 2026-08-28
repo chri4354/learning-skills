@@ -83,5 +83,22 @@ if [[ ! -f "$TARGET/.learning/profile.md" ]]; then
   echo "created $TARGET/.learning/profile.md - fill in the first two sections."
 fi
 
+# If the target is inside a git repo, keep the student's profile and ledger out
+# of it. These record what they struggled with; nobody should push that by
+# accident to a shared or public coursework repo.
+if git -C "$TARGET" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  if ! git -C "$TARGET" check-ignore -q .learning 2>/dev/null; then
+    root="$(git -C "$TARGET" rev-parse --show-toplevel)"
+    rel="${TARGET#"$root"/}"; [[ "$rel" == "$TARGET" ]] && rel=""
+    { [[ -s "$root/.gitignore" ]] && printf '\n'; } >> "$root/.gitignore" || true
+    {
+      echo "# study companion - your own learning data, keep it out of git"
+      echo "${rel:+$rel/}.learning/"
+    } >> "$root/.gitignore"
+    echo
+    echo "added .learning/ to $root/.gitignore - your profile and ledger stay private."
+  fi
+fi
+
 echo
 echo "Done. Start a session and ask about something you're stuck on."
