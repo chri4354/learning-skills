@@ -1,0 +1,10 @@
+# students' own learning data — never commit
+# (anchored to the repo root so dist/codex/.study-companion/ is still tracked)
+# plus anything install.sh writes if you test it in place
+/.learning/
+/.study-companion/
+/CLAUDE.md
+/AGENTS.md
+/.cursor/
+
+.DS_Store
