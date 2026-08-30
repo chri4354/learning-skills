@@ -55,7 +55,15 @@ Then, from inside the project you're studying in:
 ```
 
 Replace `claude` with `cursor`, `codex`, or `all`. Add `--global` to install it for
-every project instead of just this one (Claude Code and Codex; Cursor is per-project).
+every project instead of just this one — **Claude Code and Codex only**.
+
+**Cursor works differently and needs one extra step.** Cursor project rules are
+per-project by design, so the installer cannot make them apply everywhere. To get
+the posture in every folder you open, paste
+[`dist/cursor/user-rules.txt`](dist/cursor/user-rules.txt) into Cursor Settings →
+Rules (User Rules), once. Then run the installer per coursework folder if you also
+want the full loop and the ledger. Students: see
+[docs/FOR-STUDENTS.md](docs/FOR-STUDENTS.md) for the click-by-click version.
 
 It works the same whether your coursework folder is a git repo or just a folder —
 the installer only copies files, it never runs git. If the folder *is* a git repo,
@@ -68,7 +76,8 @@ To remove it: delete the files it wrote, or the block marked
 | Tool | Always-on part | Deep part |
 |---|---|---|
 | Claude Code | `CLAUDE.md` | `.claude/skills/study-companion/SKILL.md` |
-| Cursor | `.cursor/rules/study-companion.mdc` (`alwaysApply: true`) | `.cursor/rules/study-companion-loop.mdc` |
+| Cursor (per project) | `.cursor/rules/study-companion.mdc` (`alwaysApply: true`) | `.cursor/rules/study-companion-loop.mdc` |
+| Cursor (everywhere) | paste `dist/cursor/user-rules.txt` into Settings → Rules | not available globally |
 | Codex | `AGENTS.md` | `.study-companion/teaching-loop.md` |
 
 Everything is plain markdown. Read it before you trust it.
@@ -175,6 +184,7 @@ dist/                      generated per-tool adapters — don't edit
 install.sh                 copies adapters into place
 templates/profile.md       learner profile template
 docs/EVIDENCE.md           every design decision traced to a source
+docs/FOR-STUDENTS.md       setup instructions to hand to a cohort
 docs/FOR-TEACHERS.md       adopting and customising it for a course
 ```
 

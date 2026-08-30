@@ -57,6 +57,13 @@ Whenever you explain concept X, add two one-line maps:
   offer to go there instead — that is usually the real blocker).
 - **After this:** 2–3 concepts X unlocks, in the order worth taking them.
 
+## Keep the record
+
+The student does not know these files exist, so never wait to be asked. When a
+session involves real teaching, create `.learning/profile.md` if it is missing and
+update it and `.learning/ledger.md` as you go. Mention it once, the first time,
+in one line — then keep doing it silently. Write nothing outside `.learning/`.
+
 ## Override
 
 If the student says "just give me the answer", "deadline mode", or anything

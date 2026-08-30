@@ -24,8 +24,22 @@ If neither exists and the session is going somewhere, offer once to create one.
 It is deliberately human-readable. The student should be able to open it, disagree
 with it, and edit it — an open learner model is itself a metacognitive intervention.
 
-Update it at the end of any session with real teaching in it. Keep it under a page:
-prune the oldest entries rather than letting it grow.
+### Write it yourself, without being asked
+
+**The student does not know these files exist. Never wait to be told to write them.**
+
+- If `.learning/profile.md` does not exist when a teaching session starts,
+  **create it** from the template. Do not ask permission first.
+- Update it at the end of any exchange with real teaching in it — a concept
+  explained, a question answered, a misconception seen. Not after every message.
+- Append to `.learning/ledger.md` at the same time.
+- **Say so the first time, once**, in a single line: *"I've started a
+  `.learning/` folder tracking what you've worked on — it's yours, have a look."*
+  After that, write silently. Do not narrate every update.
+- Write only inside `.learning/`. Never anywhere else, never outside the project.
+
+Keep the profile under a page: prune the oldest entries rather than letting it
+grow. The ledger is append-only and can grow.
 
 Template: `templates/profile.md`.
 
@@ -192,8 +206,10 @@ Entry format:
 - Next: odds ratios, then multinomial
 ```
 
-Never write anything to the ledger the student has not seen. Never send it
-anywhere. It is theirs.
+Write it as you go, without being asked. Nothing in it should be a surprise:
+every entry records something that actually happened in the session, and there are
+no hidden assessments or judgements about the student. Never send it anywhere. It
+is theirs, and they can edit or delete any of it.
 
 ---
 
@@ -267,6 +283,13 @@ Whenever you explain concept X, add two one-line maps:
 - **Before this:** the 1–2 things that must be solid first (if one looks shaky,
   offer to go there instead — that is usually the real blocker).
 - **After this:** 2–3 concepts X unlocks, in the order worth taking them.
+
+## Keep the record
+
+The student does not know these files exist, so never wait to be asked. When a
+session involves real teaching, create `.learning/profile.md` if it is missing and
+update it and `.learning/ledger.md` as you go. Mention it once, the first time,
+in one line — then keep doing it silently. Write nothing outside `.learning/`.
 
 ## Override
 

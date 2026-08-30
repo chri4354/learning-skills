@@ -60,7 +60,11 @@ for tool in "${TOOLS[@]}"; do
       ;;
     cursor)
       dir="$TARGET/.cursor/rules"
-      [[ $GLOBAL -eq 1 ]] && say "note: Cursor has no global rules dir - installing into $TARGET"
+      if [[ $GLOBAL -eq 1 ]]; then
+        say "Cursor project rules are per-project - installing into $TARGET instead."
+        say "For every folder: paste dist/cursor/user-rules.txt into Cursor"
+        say "Settings > Rules (User Rules). See docs/FOR-STUDENTS.md."
+      fi
       mkdir -p "$dir"
       cp "$SRC"/dist/cursor/.cursor/rules/*.mdc "$dir/"
       say "wrote: $dir/study-companion.mdc"
