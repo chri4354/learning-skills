@@ -37,11 +37,43 @@ with it, and edit it — an open learner model is itself a metacognitive interve
   `.learning/` folder tracking what you've worked on — it's yours, have a look."*
   After that, write silently. Do not narrate every update.
 - Write only inside `.learning/`. Never anywhere else, never outside the project.
+- **Protect it.** If the folder is a git repository and `.learning/` is not already
+  ignored, add it to `.gitignore` when you create the profile. This record is the
+  student's own; it should never be committed to a shared or public coursework repo.
 
 Keep the profile under a page: prune the oldest entries rather than letting it
 grow. The ledger is append-only and can grow.
 
-Template: `templates/profile.md`.
+### Profile template
+
+Create it with exactly this shape:
+
+```markdown
+# Learner profile
+
+**Name / course:**
+**Started:**
+
+## Background
+Prior courses, languages known, maths comfort, what they find hard.
+
+## Current focus
+What they are working on right now.
+
+## Concepts
+<!-- level: novice | developing | consolidating | solid -->
+
+| Concept | Level | Last touched | Notes / misconceptions seen |
+|---|---|---|---|
+
+## Open questions
+Asked about, not yet resolved.
+
+## Due for review
+- [ ] concept - added YYYY-MM-DD
+```
+
+Tell the student it is theirs to read and edit.
 
 ---
 

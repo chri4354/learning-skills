@@ -4,12 +4,31 @@ Five minutes, once. Pick the section for the tool you use. If you use both, do b
 
 ---
 
-## If you use Cursor
+## If you use Cursor — the one-file way (recommended)
 
-Two one-time steps. After these, it works in every folder you open — no per-project
-setup, ever.
+No terminal, no clone, works on Mac and Windows.
 
-### Step 1 — install the skill globally
+1. Download **[`SKILL.md`](../dist/cursor/skills/study-companion/SKILL.md)** (on
+   GitHub: click the file, then the download button).
+2. Open Cursor, open the Agent chat, and paste this:
+
+   > Put the attached SKILL.md at `~/.cursor/skills/study-companion/SKILL.md`
+   > (on Windows: `%USERPROFILE%\.cursor\skills\study-companion\SKILL.md`),
+   > creating the folders if they don't exist. Don't put it in `skills-cursor`.
+
+   Attach the file, send. Cursor will create the folder and move it.
+3. Restart Cursor.
+
+Check it worked: type `/` in the Agent chat — `study-companion` should be in the
+list. Now every project you open has it.
+
+That single file contains everything: the teaching loop, the default posture, and
+the format for the notes it keeps. Nothing else to install.
+
+## If you use Cursor — the installer way
+
+Only worth it if you're comfortable with a terminal, and note **the installer is a
+shell script, so it does not run on Windows** unless you have WSL or Git Bash.
 
 ```bash
 git clone https://github.com/chri4354/learning-skills.git ~/tools/learning-skills
@@ -19,35 +38,23 @@ git clone https://github.com/chri4354/learning-skills.git ~/tools/learning-skill
 ~/tools/learning-skills/install.sh cursor --global
 ```
 
-That puts the teaching skill in `~/.cursor/skills/study-companion/`, which Cursor
-loads in every workspace. It never touches `~/.cursor/skills-cursor/` — that folder
-is Cursor's own, leave it alone.
+Same result as the one-file way, plus it sets up a starter profile for you.
 
-### Step 2 — turn on the always-on posture
+### Optional extra — the always-on posture
 
-The skill above carries the full teaching loop, but Cursor only reaches for a skill
-when your request matches it. The short default posture — try first, no pasteable
-answers, always end with a question — lives in *rules*, and Cursor rules are
-per-project. The one global home for it is the User Rules box:
+Cursor only reaches for a skill when your request matches it. To make the default
+posture apply to *everything* — try first, no pasteable answers, always end with a
+question — paste
+[`dist/cursor/user-rules.txt`](../dist/cursor/user-rules.txt) into Cursor Settings
+→ **Rules** (search settings for "rules"), once.
 
-1. Open Cursor Settings and find **Rules** (search settings for "rules"; some
-   versions call it *Rules & Memories*, older ones *Rules for AI*).
-2. Open `~/tools/learning-skills/dist/cursor/user-rules.txt`.
-3. Copy all of it, paste into User Rules, save.
+Skip this and it still works; you'll just need to ask for help a bit more
+explicitly.
 
-Skip Step 2 and it still works — you'll just have to ask for help more explicitly
-instead of getting the teaching posture by default.
+### Optional extra — per coursework folder
 
-### Optional — per coursework folder
-
-If you'd rather keep it project-scoped, or your tutor gives you a starter repo with
-it built in, run this inside the folder instead of Step 1:
-
-```bash
-~/tools/learning-skills/install.sh cursor
-```
-
-That writes `.cursor/skills/` and `.cursor/rules/` into that folder only.
+If you'd rather keep it scoped to one folder, run the installer inside that folder
+without `--global`. It writes `.cursor/skills/` and `.cursor/rules/` there only.
 
 ## If you use Claude Code
 
@@ -95,8 +102,8 @@ them, delete them — they're yours.
 Two things worth knowing:
 
 - **Nothing leaves your machine.** No account, no telemetry, no uploads. If your
-  coursework folder is a git repo, the installer adds `.learning/` to `.gitignore`
-  so it can't be committed by accident.
+  coursework folder is a git repo, `.learning/` gets added to `.gitignore` so it
+  can't be committed by accident.
 - **It's useful to you.** If your course asks you to declare how you used AI,
   `.learning/ledger.md` is a far better answer than "I used ChatGPT" — it shows
   what you actually did.
