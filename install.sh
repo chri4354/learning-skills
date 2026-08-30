@@ -59,16 +59,27 @@ for tool in "${TOOLS[@]}"; do
       append_block "$SRC/dist/claude/CLAUDE.md" "$md"
       ;;
     cursor)
-      dir="$TARGET/.cursor/rules"
+      # Cursor discovers Agent Skills from ~/.cursor/skills (global) and
+      # .cursor/skills (per project). Rules, which carry the always-on posture,
+      # only exist per project - hence the User Rules paste for global coverage.
+      if [[ $GLOBAL -eq 1 ]]; then skills="$HOME/.cursor/skills"
+      else skills="$TARGET/.cursor/skills"; fi
+      mkdir -p "$skills/study-companion"
+      cp "$SRC"/dist/cursor/skills/study-companion/* "$skills/study-companion/"
+      say "wrote: $skills/study-companion/SKILL.md"
+
       if [[ $GLOBAL -eq 1 ]]; then
-        say "Cursor project rules are per-project - installing into $TARGET instead."
-        say "For every folder: paste dist/cursor/user-rules.txt into Cursor"
-        say "Settings > Rules (User Rules). See docs/FOR-STUDENTS.md."
+        say ""
+        say "The skill is now global. The always-on posture is not: Cursor rules"
+        say "are per-project. To get it in every folder, paste this file into"
+        say "Cursor Settings > Rules (User Rules), once:"
+        say "  $SRC/dist/cursor/user-rules.txt"
+      else
+        dir="$TARGET/.cursor/rules"
+        mkdir -p "$dir"
+        cp "$SRC"/dist/cursor/.cursor/rules/study-companion.mdc "$dir/"
+        say "wrote: $dir/study-companion.mdc"
       fi
-      mkdir -p "$dir"
-      cp "$SRC"/dist/cursor/.cursor/rules/*.mdc "$dir/"
-      say "wrote: $dir/study-companion.mdc"
-      say "wrote: $dir/study-companion-loop.mdc"
       ;;
     codex)
       if [[ $GLOBAL -eq 1 ]]; then base="$HOME/.codex"; else base="$TARGET"; fi

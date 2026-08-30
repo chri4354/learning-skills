@@ -49,14 +49,13 @@ cp templates/profile.md dist/claude/.claude/skills/study-companion/profile-templ
   cat "$ALWAYS_ON"
 } > dist/cursor/.cursor/rules/study-companion.mdc
 
-{
-  echo "---"
-  echo "description: Full teaching loop - diagnose, attempt, explain, self-explain, test, map. Fetch when the student is trying to understand a concept, is stuck on a course exercise, or asks to be quizzed."
-  echo "alwaysApply: false"
-  echo "---"
-  echo
-  cat "$LOOP"
-} > dist/cursor/.cursor/rules/study-companion-loop.mdc
+# The deep half ships as a Cursor Agent Skill. Same SKILL.md contract as Claude
+# Code (name + description; folder name must equal name), and Cursor discovers
+# skills from ~/.cursor/skills/ globally as well as .cursor/skills/ per project.
+mkdir -p dist/cursor/skills/study-companion
+cp dist/claude/.claude/skills/study-companion/SKILL.md \
+   dist/cursor/skills/study-companion/SKILL.md
+cp templates/profile.md dist/cursor/skills/study-companion/profile-template.md
 
 # Cursor "User Rules" (Settings > Rules) are global across every project but are
 # plain text pasted into the UI - no file, no frontmatter. Emit a paste-ready copy.

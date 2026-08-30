@@ -6,43 +6,48 @@ Five minutes, once. Pick the section for the tool you use. If you use both, do b
 
 ## If you use Cursor
 
-Cursor has two places rules can live, and you want both for different reasons.
+Two one-time steps. After these, it works in every folder you open — no per-project
+setup, ever.
 
-### Step 1 — make it work everywhere (2 minutes, do this one)
-
-Cursor's **User Rules** are global: they apply in every project you ever open, with
-no per-folder setup.
-
-1. Open Cursor Settings and find **Rules** (search the settings for "rules" — some
-   versions label it *Rules & Memories*, older ones *Rules for AI*).
-2. Open [`dist/cursor/user-rules.txt`](../dist/cursor/user-rules.txt) from this repo.
-3. Copy the whole thing, paste it into User Rules, save.
-
-That's it. Every folder you open in Cursor from now on gets the study-companion
-posture. Nothing else to install, nothing to remember.
-
-### Step 2 — the full version, in your coursework folder (optional, recommended)
-
-User Rules only carry the short version. The full teaching loop — the fading
-worked examples, the spaced review, the ledger — is too long for a settings box and
-lives in project files instead.
-
-Clone this repo somewhere that is **not** your coursework folder:
+### Step 1 — install the skill globally
 
 ```bash
 git clone https://github.com/chri4354/learning-skills.git ~/tools/learning-skills
 ```
 
-Then, from inside your coursework folder:
+```bash
+~/tools/learning-skills/install.sh cursor --global
+```
+
+That puts the teaching skill in `~/.cursor/skills/study-companion/`, which Cursor
+loads in every workspace. It never touches `~/.cursor/skills-cursor/` — that folder
+is Cursor's own, leave it alone.
+
+### Step 2 — turn on the always-on posture
+
+The skill above carries the full teaching loop, but Cursor only reaches for a skill
+when your request matches it. The short default posture — try first, no pasteable
+answers, always end with a question — lives in *rules*, and Cursor rules are
+per-project. The one global home for it is the User Rules box:
+
+1. Open Cursor Settings and find **Rules** (search settings for "rules"; some
+   versions call it *Rules & Memories*, older ones *Rules for AI*).
+2. Open `~/tools/learning-skills/dist/cursor/user-rules.txt`.
+3. Copy all of it, paste into User Rules, save.
+
+Skip Step 2 and it still works — you'll just have to ask for help more explicitly
+instead of getting the teaching posture by default.
+
+### Optional — per coursework folder
+
+If you'd rather keep it project-scoped, or your tutor gives you a starter repo with
+it built in, run this inside the folder instead of Step 1:
 
 ```bash
 ~/tools/learning-skills/install.sh cursor
 ```
 
-Repeat that one command for each coursework folder. Cursor project rules are
-per-project — there is no way around that, which is exactly why Step 1 exists.
-
----
+That writes `.cursor/skills/` and `.cursor/rules/` into that folder only.
 
 ## If you use Claude Code
 
@@ -60,9 +65,9 @@ Claude Code does support global install properly, so there is no Step 2.
 
 ## If you switch between the two
 
-Do the Cursor Step 1 paste **and** the Claude `--global` install. Then optionally
-run `install.sh all` inside each coursework folder. The two tools don't share
-anything, so you need both.
+Run `install.sh all --global` once — that covers the Cursor skill, Claude Code and
+Codex in one go — then do the Cursor User Rules paste from Step 2. The two tools
+don't share configuration, so both halves are needed.
 
 ---
 
