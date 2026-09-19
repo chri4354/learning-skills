@@ -79,6 +79,7 @@ To remove it: delete the files it wrote, or the block marked
 | Cursor (everywhere) | paste `dist/cursor/user-rules.txt` into Settings → Rules | `~/.cursor/skills/study-companion/SKILL.md` |
 | Cursor (per project) | `.cursor/rules/study-companion.mdc` (`alwaysApply: true`) | `.cursor/skills/study-companion/SKILL.md` |
 | Codex | `AGENTS.md` | `.study-companion/teaching-loop.md` |
+| VS Code course folder (Copilot) | `.github/copilot-instructions.md`, `AGENTS.md`, `.vscode/settings.json` | read-only `.github/agents/tutor.agent.md` (short rules only, see `docs/FOR-TEACHERS.md`) |
 
 Everything is plain markdown. Read it before you trust it.
 
@@ -155,15 +156,17 @@ skill > Yes, and it breaks the gradient. Two questions:
 ## What it is not
 
 It is **not** an academic-integrity control. It cannot detect anything, it doesn't
-report anything anywhere, and you can bypass it by typing "just give me the
-answer." That's intentional: scaffolding that can't be escaped gets deleted
+report anything anywhere, and you can ask it for a straight answer by typing "just
+give me the answer." It gives one for concepts and setup problems; it never writes
+your code, which always comes as a skeleton for you to finish. The escape hatch is
+intentional: scaffolding that can't be escaped gets deleted
 entirely, and then you have no defaults at all. One study of real student–AI
 conversations found ~70% of students actively resist pedagogical scaffolding when
 it's imposed on them.
 
-There's also a **deadline mode**. Say "deadline mode" and it gives you the answer
-straight, plus one line on what the exam version would look like, and it puts a
-retrieval question in your profile for after you've submitted. Students under time
+In a hurry? Say so. It skips the teaching and answers directly, still without
+writing your code, plus one line on what the exam version would look like, and it
+puts a retrieval question in your profile for after you've submitted. Students under time
 pressure abandon exploratory learning entirely — pretending otherwise just gets the
 whole thing turned off the night before a deadline.
 
@@ -186,6 +189,8 @@ templates/profile.md       learner profile template
 docs/EVIDENCE.md           every design decision traced to a source
 docs/FOR-STUDENTS.md       setup instructions to hand to a cohort
 docs/FOR-TEACHERS.md       adopting and customising it for a course
+docs/VSCODE-TESTING.md     pre-term checks for the VS Code course-folder bundle
+scripts/export-vscode-bundle.sh   copies dist/vscode/ into a course folder
 ```
 
 Teachers: [docs/FOR-TEACHERS.md](docs/FOR-TEACHERS.md) covers adding your own

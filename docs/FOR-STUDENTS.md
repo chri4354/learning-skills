@@ -84,14 +84,15 @@ Ask it to explain something and it will work out what you already know, ask you 
 try first, explain at the level you're actually at, make you explain it back, and
 test you. It tells you what to understand first and what to study next.
 
-It will not hand you a finished answer by default. It will hand you one the moment
-you ask:
+It will not hand you a finished answer by default. For a concept or a setup
+problem, it will hand you one the moment you ask:
 
 > **just give me the answer**
 
-No lecture, no argument. There's also **deadline mode** — say that and it stops
-teaching entirely, gives you what you need, and saves a couple of review questions
-for after you've submitted.
+No lecture, no argument. It never writes your code, though: code always comes as
+a skeleton for you to finish. If you're in a hurry, say so — it stops teaching,
+answers directly (still without writing your code), and saves a couple of review
+questions for after you've submitted.
 
 ## The `.learning/` folder
 

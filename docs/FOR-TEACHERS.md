@@ -39,6 +39,50 @@ students will never think about it again.
    al. is more persuasive to a 19-year-old than any amount of exhortation. See
    [EVIDENCE.md](EVIDENCE.md).
 
+## A VS Code course folder
+
+For a class on VS Code with GitHub Copilot (Copilot Free is enough),
+`./build.sh` also produces `dist/vscode/`: a bundle that goes into the course
+folder you hand out.
+
+```bash
+./build.sh
+scripts/export-vscode-bundle.sh ~/path/to/course-folder
+```
+
+The bundle lands in the folder **and** in its `project/` subfolder, so the tutor
+is on whichever one a student opens. It contains:
+
+- `.github/copilot-instructions.md` — the tutor rules for Copilot chat
+- `.github/agents/tutor.agent.md` — a **Tutor** agent with the same rules, whose
+  tools are limited to reading and searching, so it cannot edit files
+- `.vscode/settings.json` — Copilot autocomplete off for Python and notebooks,
+  and Copilot told not to load `AGENTS.md` as well
+- `AGENTS.md` — the same rules for other assistants
+
+There is no Gemini fallback: Gemini Code Assist no longer supports individual
+accounts in the VS Code extension, so the bundle relies on Copilot Free.
+
+### Why the VS Code bundle is short
+
+Students run this on the free Copilot model. Small models cannot follow
+the full teaching loop: given `src/teaching-loop.md` they keep the easy rules (a
+closing confidence question) and drop the ones that teach (attempt first, no
+finished code). So every VS Code file carries only `src/vscode/tutor.md`: eight
+unconditional rules and one worked example, about 35 lines. No learner profile,
+no fading ladder, no concept maps.
+
+The escape hatch works the same way as in the full loop, to match course AI
+policies that forbid AI writing submitted code: "just give me the answer" gets a
+direct answer for a concept or a setup problem, but code is always a skeleton,
+however the student asks. The full loop still ships to Claude Code,
+Cursor and Codex. The export script also removes the `study-companion` skill that
+earlier bundles put in `.github/skills/`.
+
+Before term, run [VSCODE-TESTING.md](VSCODE-TESTING.md). CI
+(`.github/workflows/check-generated.yml`) fails whenever `dist/` doesn't match a
+fresh build, so the files for different tools can't drift apart.
+
 ## Customising
 
 Everything canonical lives in `src/`. Edit there and run `./build.sh` to
