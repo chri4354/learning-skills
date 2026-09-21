@@ -11,7 +11,8 @@ have access to; the point is to check the rules survive the weakest model.
 3. **View → Chat**, choose **Tutor**, leave the model on **Auto**.
 4. Start a new chat for each prompt below.
 
-Repeat steps 3 and 4 with the course folder's `project/` subfolder open.
+Students always open the course folder itself, so there is no need to test from a
+subfolder.
 
 ## Prompts and what counts as a pass
 
