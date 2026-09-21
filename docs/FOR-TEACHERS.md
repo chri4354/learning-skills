@@ -50,8 +50,11 @@ folder you hand out.
 scripts/export-vscode-bundle.sh ~/path/to/course-folder
 ```
 
-The bundle lands in the folder **and** in its `project/` subfolder, so the tutor
-is on whichever one a student opens. It contains:
+The bundle lands in the root of the course folder. Students always open that
+folder in VS Code, and it is also their one git repository (the project sits in a
+`project/` subfolder), so the tutor setup lives at the root only. Keep it out of
+students' repositories with `.github/`, `.vscode/` and `AGENTS.md` in the course
+folder's `.gitignore`. It contains:
 
 - `.github/copilot-instructions.md` — the tutor rules for Copilot chat
 - `.github/agents/tutor.agent.md` — a **Tutor** agent with the same rules, whose
